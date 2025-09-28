@@ -253,7 +253,7 @@ class ExcelCardInterface {
             button.style.backgroundColor = '#0054e3';
             button.style.color = 'white';
             button.style.border = '1px outset #0054e3';
-            button.style.padding = '6px 16px';
+            button.style.padding = '4px 12px';
             button.style.cursor = 'pointer';
             button.style.borderRadius = '2px';
             button.style.margin = '0 auto';
