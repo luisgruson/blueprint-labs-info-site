@@ -64,3 +64,78 @@
     font-size: 2.3rem;
     margin: 0;
 }
+
+/* Responsive Design - 860px breakpoint */
+@media (max-width: 860px) {
+    .hero-content {
+        padding: 1rem;
+        max-width: 100%;
+    }
+    
+    .hero-content h1 {
+        font-size: 1.8rem;
+        line-height: 1.2;
+    }
+    
+    .hero-content h2 {
+        font-size: 1.4rem;
+    }
+    
+    .hero-content p {
+        font-size: 1rem;
+        line-height: 1.4;
+        margin: 1rem 0;
+    }
+    
+    .services {
+        padding: 1rem;
+        max-width: 100%;
+    }
+    
+    .services-text h1 {
+        font-size: 1.8rem;
+    }
+    
+    .services-text h2 {
+        font-size: 1.6rem;
+    }
+    
+    .services-text p {
+        font-size: 1rem;
+        line-height: 1.4;
+    }
+    
+    .contact-us {
+        padding: 1rem;
+    }
+    
+    .contact-us h1 {
+        font-size: 1.8rem;
+    }
+    
+    .contact-content {
+        max-width: 100%;
+    }
+}
+
+@media (max-width: 480px) {
+    .hero-content h1 {
+        font-size: 1.5rem;
+    }
+    
+    .hero-content h2 {
+        font-size: 1.2rem;
+    }
+    
+    .services-text h1 {
+        font-size: 1.5rem;
+    }
+    
+    .services-text h2 {
+        font-size: 1.3rem;
+    }
+    
+    .contact-us h1 {
+        font-size: 1.5rem;
+    }
+}

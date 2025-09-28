@@ -48,3 +48,37 @@
 .nav-links a:hover {
     color: black;
 }
+
+/* Responsive Navigation - 860px breakpoint */
+@media (max-width: 860px) {
+    .floating-nav {
+        top: 10px;
+        padding: 0.6rem 1rem;
+    }
+    
+    .nav-content {
+        gap: 1rem;
+    }
+    
+    .nav-links {
+        gap: 1rem;
+    }
+    
+    .nav-links a {
+        font-size: 0.8rem;
+    }
+}
+
+@media (max-width: 480px) {
+    .floating-nav {
+        padding: 0.5rem 0.8rem;
+    }
+    
+    .nav-links {
+        gap: 0.8rem;
+    }
+    
+    .nav-links a {
+        font-size: 0.75rem;
+    }
+}
