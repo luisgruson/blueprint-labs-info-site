@@ -1,0 +1,66 @@
+/* Hero section styles */
+.hero-content {
+    height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    max-width: 700px;
+    margin: 0 auto;
+    flex-direction: column;
+    width: 100%;
+}
+
+.hero-content h1 {
+    margin: 0 0 0.5rem 0;
+}
+
+/* Services section styles */
+.services {
+    height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    max-width: 1200px;
+    margin: 0 auto;
+    flex-direction: column;
+    padding: 2rem;
+}
+
+.services-text {
+    max-width: 700px;
+}
+
+.services-text h1 {
+    font-size: 2.3rem;
+    margin: 0;
+}
+
+.services-text h2 {
+    font-size: 2.1rem;
+    margin: 0 0 0.5rem 0;
+}
+
+/* Contact section styles */
+.contact-us {
+    height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    background-color: #ffffff;
+    margin: 0 auto;
+    flex-direction: column;
+    padding: 2rem;
+}
+
+.contact-content {
+    max-width: 700px;
+    width: 100%;
+}
+
+.contact-us h1 {
+    font-size: 2.3rem;
+    margin: 0;
+}

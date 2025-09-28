@@ -1,0 +1,51 @@
+/* Main page styles */
+body {
+    font-family: 'FunnelDisplay', Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+    background-color: white;
+}
+
+/* Smooth scrolling for the entire page */
+html {
+    scroll-behavior: smooth;
+}
+
+/* Fade-in animation */
+.fade-in {
+    transition: opacity 0.8s ease-in-out;
+}
+
+/* Typewriter animation - handled by JavaScript */
+.typewriter {
+    white-space: nowrap;
+    letter-spacing: 0.15em;
+}
+
+/* Pulse animation for scroll arrow */
+@keyframes pulse {
+    0% { opacity: 1; }
+    50% { opacity: 0.5; }
+    100% { opacity: 1; }
+}
+
+/* Scroll arrow styles */
+.scroll-arrow {
+    position: absolute;
+    bottom: 30px;
+    left: 50%;
+    transform: translateX(-50%);
+    opacity: 0;
+    transition: opacity 0.8s ease-in-out;
+}
+
+.scroll-arrow.visible {
+    opacity: 1;
+    animation: pulse 2s infinite;
+}
+
+.arrow-down {
+    font-size: 2rem;
+    color: #999;
+    text-align: center;
+}

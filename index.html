@@ -1,0 +1,672 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>The Technical Design Lab</title>
+    <link rel="stylesheet" href="assets/styles/button.css">
+    <link rel="stylesheet" href="assets/styles/typography.css">
+    <link rel="stylesheet" href="assets/styles/navigation.css">
+    <link rel="stylesheet" href="assets/styles/main.css">
+    <link rel="stylesheet" href="assets/styles/sections.css">
+    <link rel="stylesheet" href="assets/styles/form.css">
+    <link rel="stylesheet" href="assets/styles/footer.css">
+    <style>
+        @font-face {
+            font-family: 'HomeVideo';
+            src: url('assets/fonts/home-video/HomeVideo-BLG6G.ttf') format('truetype');
+        }
+        
+        @font-face {
+            font-family: 'HomeVideoBold';
+            src: url('assets/fonts/home-video/HomeVideoBold-R90Dv.ttf') format('truetype');
+        }
+        
+        @font-face {
+            font-family: 'FunnelDisplay';
+            src: url('assets/fonts/funnel-display/static/FunnelDisplay-Regular.ttf') format('truetype');
+        }
+        
+        @font-face {
+            font-family: 'FunnelDisplay';
+            src: url('assets/fonts/funnel-display/static/FunnelDisplay-Bold.ttf') format('truetype');
+            font-weight: bold;
+        }
+        
+        
+        .hero-content {
+            height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            text-align: center;
+            max-width: 700px;
+            margin: 0 auto;
+            flex-direction: column;
+        }
+        
+        .services {
+            height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            text-align: center;
+            max-width: 1200px;
+            margin: 0 auto;
+            flex-direction: column;
+            padding: 2rem;
+        }
+        
+        .services-text {
+            max-width: 700px;
+        }
+        
+        .services-text h1 {
+            font-size: 2.3rem;
+            margin: 0;
+        }
+        
+        .services-text h2 {
+            font-size: 2.1rem;
+            margin: 0 0 0.5rem 0;
+        }
+        
+        .contact-us h1 {
+            font-size: 2.3rem;
+            margin: 0;
+        }
+        
+        .contact-us {
+            height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            text-align: center;
+            background-color: #ffffff;
+            margin: 0 auto;
+            flex-direction: column;
+            padding: 2rem;
+        }
+        
+        /* Smooth scrolling for the entire page */
+        html {
+            scroll-behavior: smooth;
+        }
+        
+        .contact-content {
+            max-width: 700px;
+            width: 100%;
+        }
+        
+        .signup-container {
+            width: 100%;
+            max-width: 400px;
+            background: white;
+            border: 1px solid #ccc;
+            margin: 2rem auto 0;
+        }
+        
+        .header {
+            background: linear-gradient(to bottom, #8bb6d6, #5d89b0);
+            color: white;
+            padding: 8px 12px;
+            font-size: 12px;
+            font-weight: bold;
+            border-bottom: 1px solid #4a7296;
+        }
+        
+        .form-content {
+            padding: 15px;
+            background: white;
+        }
+        
+        .form-row {
+            margin-bottom: 10px;
+            display: flex;
+            align-items: center;
+        }
+        
+        .form-label {
+            width: 100px;
+            font-size: 11px;
+            color: #333;
+            font-weight: normal;
+            text-align: left;
+        }
+        
+        .form-input {
+            flex: 1;
+        }
+        
+        input[type="text"], input[type="email"], input[type="password"] {
+            width: 200px;
+            padding: 2px 4px;
+            border: 1px solid #999;
+            font-size: 11px;
+            font-family: Verdana, Arial, sans-serif;
+        }
+        
+        .signup-button {
+            background: linear-gradient(to bottom, #ffd700, #ffb000);
+            border: 1px solid #cc8800;
+            padding: 4px 12px;
+            font-size: 11px;
+            font-weight: bold;
+            cursor: pointer;
+            margin-top: 10px;
+        }
+        
+        .signup-button:hover {
+            background: linear-gradient(to bottom, #ffe030, #ffbb20);
+        }
+        
+        footer {
+            text-align: center;
+            padding: 2rem;
+            background-color: #ffffff;
+        }
+        
+        footer p {
+            color: #999;
+            font-size: 0.8rem;
+            margin: 0;
+            font-family: 'HomeVideo', Arial, sans-serif;
+        }
+        
+        /* Excel Interface Styles */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        .excel-window {
+            background: #c0c0c0;
+            border: 2px outset #c0c0c0;
+            margin: 20px;
+            box-shadow: 2px 2px 4px rgba(0,0,0,0.3);
+            font-family: 'MS Sans Serif', sans-serif;
+            font-size: 8pt;
+        }
+
+        .title-bar {
+            background: linear-gradient(90deg, #0054e3 0%, #0054e3 100%);
+            color: white;
+            padding: 2px 4px;
+            font-size: 11px;
+            font-weight: normal;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .title-text {
+            display: flex;
+            align-items: center;
+            gap: 4px;
+        }
+
+        .window-controls {
+            display: flex;
+            gap: 2px;
+        }
+
+        .control-btn {
+            width: 16px;
+            height: 14px;
+            background: #c0c0c0;
+            border: 1px outset #c0c0c0;
+            font-size: 8px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            cursor: pointer;
+        }
+
+        .menu-bar {
+            background: #c0c0c0;
+            border-bottom: 1px solid #808080;
+            padding: 2px;
+            font-size: 8pt;
+        }
+
+        .menu-items {
+            display: flex;
+            gap: 8px;
+            padding: 2px 4px;
+        }
+
+        .menu-item {
+            padding: 2px 6px;
+            cursor: pointer;
+            border: 1px solid transparent;
+        }
+
+        .menu-item:hover {
+            border: 1px inset #c0c0c0;
+            background: #e0e0e0;
+        }
+
+        .toolbar {
+            background: #c0c0c0;
+            border-bottom: 1px solid #808080;
+            padding: 4px;
+            display: flex;
+            gap: 2px;
+            flex-wrap: wrap;
+        }
+
+        .toolbar-btn {
+            width: 23px;
+            height: 22px;
+            background: #c0c0c0;
+            border: 1px outset #c0c0c0;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 10px;
+        }
+
+        .toolbar-btn:hover {
+            border: 1px inset #c0c0c0;
+        }
+
+        .separator {
+            width: 1px;
+            height: 22px;
+            background: #808080;
+            margin: 0 2px;
+        }
+
+        .formula-bar {
+            background: #c0c0c0;
+            border-bottom: 1px solid #808080;
+            padding: 2px 4px;
+            display: flex;
+            align-items: center;
+            gap: 4px;
+            font-size: 8pt;
+        }
+
+        .name-box {
+            width: 60px;
+            height: 18px;
+            border: 1px inset #c0c0c0;
+            background: white;
+            font-size: 8pt;
+            padding: 1px 4px;
+        }
+
+        .formula-input {
+            flex: 1;
+            height: 18px;
+            border: 1px inset #c0c0c0;
+            background: white;
+            font-size: 8pt;
+            padding: 1px 4px;
+        }
+
+        .spreadsheet-container {
+            background: white;
+            border: 1px inset #c0c0c0;
+            margin: 4px;
+            overflow: auto;
+            height: 400px;
+        }
+
+        .spreadsheet {
+            display: grid;
+            grid-template-columns: 40px repeat(10, 80px);
+            border-collapse: collapse;
+        }
+
+        .row-header {
+            background: #c0c0c0;
+            border: 1px solid #808080;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 8pt;
+            font-weight: normal;
+            height: 20px;
+            cursor: pointer;
+        }
+
+        .col-header {
+            background: #c0c0c0;
+            border: 1px solid #808080;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 8pt;
+            font-weight: normal;
+            height: 20px;
+            cursor: pointer;
+        }
+
+        .cell {
+            border: 1px solid #c0c0c0;
+            height: 20px;
+            padding: 2px 4px;
+            font-size: 8pt;
+            background: white;
+            cursor: cell;
+            display: flex;
+            align-items: center;
+            overflow: hidden;
+            position: relative;
+        }
+
+        .cell:hover {
+            border: 1px solid #0054e3;
+        }
+
+        .cell.selected {
+            border: 2px solid #0054e3;
+            background: #e6f3ff;
+        }
+
+        .card {
+            background: linear-gradient(145deg, #f0f0f0, #d0d0d0);
+            border: 1px solid #999;
+            border-radius: 4px;
+            padding: 4px 6px;
+            margin: 1px;
+            font-size: 7pt;
+            box-shadow: 1px 1px 2px rgba(0,0,0,0.2);
+            cursor: pointer;
+            transition: all 0.2s;
+            min-height: 16px;
+            display: flex;
+            align-items: center;
+        }
+
+        .card:hover {
+            background: linear-gradient(145deg, #fff, #e0e0e0);
+            transform: translateY(-1px);
+            box-shadow: 2px 2px 4px rgba(0,0,0,0.3);
+        }
+
+        .status-bar {
+            background: #c0c0c0;
+            border-top: 1px solid #808080;
+            padding: 2px 4px;
+            font-size: 8pt;
+            display: flex;
+            justify-content: space-between;
+        }
+
+        .sheet-tabs {
+            background: #c0c0c0;
+            border-top: 1px solid #808080;
+            padding: 2px 4px;
+            display: flex;
+            gap: 2px;
+        }
+
+        .sheet-tab {
+            background: #c0c0c0;
+            border: 1px solid #808080;
+            border-bottom: none;
+            padding: 2px 12px;
+            font-size: 8pt;
+            cursor: pointer;
+        }
+
+        .sheet-tab.active {
+            background: white;
+            border-bottom: 1px solid white;
+            position: relative;
+            top: 1px;
+        }
+        
+        .typewriter {
+            overflow: hidden;
+            white-space: nowrap;
+            margin: 0 auto;
+        }
+        
+        .fade-in {
+            transition: opacity 0.8s ease-in-out;
+        }
+        
+        .scroll-arrow {
+            position: absolute;
+            bottom: 30px;
+            left: 50%;
+            transform: translateX(-50%);
+            opacity: 0;
+            transition: opacity 0.8s ease-in-out;
+        }
+        
+        .scroll-arrow.visible {
+            opacity: 1;
+            animation: pulse 2s infinite;
+        }
+        
+        .arrow-down {
+            font-size: 2rem;
+            color: #999;
+            text-align: center;
+        }
+        
+        @keyframes pulse {
+            0% { opacity: 0.4; transform: translateX(-50%) translateY(0); }
+            50% { opacity: 1; transform: translateX(-50%) translateY(-5px); }
+            100% { opacity: 0.4; transform: translateX(-50%) translateY(0); }
+        }
+        
+    </style>
+</head>
+<body>
+    <nav class="floating-nav">
+        <div class="nav-content">
+            <div class="nav-logo">DealQ</div>
+        <div class="nav-links">
+            <a href="#hero">About</a>
+            <a href="#services">Services</a>
+            <a href="#contact-us">Contact</a>
+        </div>
+        </div>
+    </nav>
+    
+    <div id="hero" class="hero-content">
+        <h1 class="typewriter">The Technical Design Lab</h1>
+        <h2 class="fade-in" style="opacity: 0;">For Real Estate Companies</h2>
+        <p class="fade-in" style="opacity: 0;">We help leaders in the real estate industry define and design AI-native products and workflows to unlock new value for
+        their businesses.</p>
+        <a href="#services" class="button fade-in" style="opacity: 0;">See What We Do</a>
+        <t class="fade-in" style="opacity: 0;">Or learn more with a <a href="https://cal.com/the-technical-design-lab/30min">free strategy call</a></t>
+        
+        <div class="scroll-arrow fade-in" style="opacity: 0;">
+            <div class="arrow-down">↓</div>
+        </div>
+    </div>
+    
+    <div id="services" class="services">
+        <div class="services-text">
+            <h1>Turn Complexity</h1>
+            <h2>into Opportunity</h2>
+            <p>We work to gain a deep understanding of your business so that you can fully leverage AI to unlock new value for your
+    company.</p>
+        </div>
+        
+        <div class="excel-window">
+            <div class="title-bar">
+                <div class="title-text">
+                    <span>📊</span>
+                    <span>DealQ - Services</span>
+                </div>
+                <div class="window-controls">
+                    <div class="control-btn">_</div>
+                    <div class="control-btn">□</div>
+                    <div class="control-btn">✕</div>
+                </div>
+            </div>
+
+            <div class="menu-bar">
+                <div class="menu-items">
+                    <div class="menu-item">File</div>
+                    <div class="menu-item">Edit</div>
+                    <div class="menu-item">View</div>
+                    <div class="menu-item">Insert</div>
+                    <div class="menu-item">Format</div>
+                    <div class="menu-item">Tools</div>
+                    <div class="menu-item">Data</div>
+                    <div class="menu-item">Window</div>
+                    <div class="menu-item">Help</div>
+                </div>
+            </div>
+
+            <div class="toolbar">
+                <div class="toolbar-btn">📄</div>
+                <div class="toolbar-btn">📁</div>
+                <div class="toolbar-btn">💾</div>
+                <div class="separator"></div>
+                <div class="toolbar-btn">📋</div>
+                <div class="toolbar-btn">📄</div>
+                <div class="toolbar-btn">✂️</div>
+                <div class="separator"></div>
+                <div class="toolbar-btn">B</div>
+                <div class="toolbar-btn">I</div>
+                <div class="toolbar-btn">U</div>
+            </div>
+
+            <div class="formula-bar">
+                <input type="text" class="name-box" value="A1" readonly>
+                <span>=</span>
+                <input type="text" class="formula-input" placeholder="Click a cell to edit...">
+            </div>
+
+            <div class="spreadsheet-container">
+                <div class="spreadsheet" id="spreadsheet">
+                    <!-- Headers will be generated by JavaScript -->
+                </div>
+            </div>
+
+            <div class="sheet-tabs">
+                <div class="sheet-tab active">Automate workflows</div>
+                <div class="sheet-tab">Web scraping services</div>
+                <div class="sheet-tab">CRM management</div>
+                <div class="sheet-tab">Property Assessment</div>
+                <div class="sheet-tab">Dynamic Modeling</div>
+                <div class="sheet-tab">Lead Generation</div>
+            </div>
+
+            <div class="status-bar">
+                <span>Ready</span>
+                <span>NUM</span>
+            </div>
+        </div>
+    </div>
+    
+    <div id="contact-us" class="contact-us">
+        <div class="contact-content">
+            <h1>Contact Us</h1>
+            <p>Get in touch with our team</p>
+            
+            <div class="signup-container">
+                <div class="header">Sign Up for Strategy Call</div>
+                <div class="form-content">
+                    <form>
+                        <div class="form-row">
+                            <label class="form-label">Full Name:</label>
+                            <div class="form-input">
+                                <input type="text" name="fullname" required>
+                            </div>
+                        </div>
+                        
+                        <div class="form-row">
+                            <label class="form-label">Email Address:</label>
+                            <div class="form-input">
+                                <input type="email" name="email" required>
+                            </div>
+                        </div>
+                        
+                        <div class="form-row">
+                            <label class="form-label">Company Name:</label>
+                            <div class="form-input">
+                                <input type="text" name="company">
+                            </div>
+                        </div>
+                        
+                        <button type="button" class="signup-button" onclick="alert('Call scheduled! 📞')">Schedule a Call</button>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+    
+    <footer>
+        <p>DealQ, LLC 2025</p>
+    </footer>
+    
+    <script>
+        // Scroll to top on page load/refresh
+        window.addEventListener('load', function() {
+            window.scrollTo(0, 0);
+        });
+        
+        // Also handle beforeunload to ensure we're at top
+        window.addEventListener('beforeunload', function() {
+            window.scrollTo(0, 0);
+        });
+        
+        // Add typewriter effect on page load
+        document.addEventListener('DOMContentLoaded', function() {
+            const typewriterElement = document.querySelector('.typewriter');
+            const text = typewriterElement.textContent;
+            
+            // Set initial state
+            typewriterElement.textContent = '';
+            typewriterElement.style.borderRight = '0.15em solid black';
+            
+            let i = 0;
+            const typeWriter = () => {
+                if (i < text.length) {
+                    typewriterElement.textContent += text.charAt(i);
+                    i++;
+                    setTimeout(typeWriter, 100);
+                } else {
+                    // Keep the text and just remove the cursor after a delay
+                    setTimeout(() => {
+                        typewriterElement.style.borderRight = 'none';
+                        // Show h2 after h1 animation is complete with additional 0.5s pause
+                        setTimeout(() => {
+                            const h2Element = document.querySelector('h2.fade-in');
+                            h2Element.style.opacity = '1';
+                            
+                            // Show p after h2 has faded in with additional 1s pause
+                            setTimeout(() => {
+                                const pElement = document.querySelector('p.fade-in');
+                                pElement.style.opacity = '1';
+                                
+                                // Show button and text after p has faded in with additional 1s pause
+                                setTimeout(() => {
+                                    const buttonElement = document.querySelector('a.button.fade-in');
+                                    const tElement = document.querySelector('t.fade-in');
+                                    buttonElement.style.opacity = '1';
+                                    tElement.style.opacity = '1';
+                                    
+                                    // Show arrow after button and text with additional 0.5s pause
+                                    setTimeout(() => {
+                                        const arrowElement = document.querySelector('.scroll-arrow.fade-in');
+                                        arrowElement.classList.add('visible');
+                                    }, 500);
+                                }, 1000);
+                            }, 1000);
+                        }, 500);
+                    }, 1000);
+                }
+            };
+            
+            // Start typing after a short delay
+            setTimeout(typeWriter, 1000);
+        });
+
+    </script>
+    
+    <script src="assets/js/excel-interface.js"></script>
+</body>
+</html>

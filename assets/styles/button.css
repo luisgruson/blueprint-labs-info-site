@@ -1,0 +1,18 @@
+.button {
+    background-color: black;
+    color: white;
+    font-family: 'FunnelDisplay', Arial, sans-serif;
+    font-size: 1rem;
+    font-weight: normal;
+    padding: 0.6rem 1rem;
+    border: none;
+    border-radius: 14px;
+    cursor: pointer;
+    text-decoration: none;
+    display: inline-block;
+    transition: background-color 0.3s ease;
+}
+
+.button:hover {
+    background-color: #333333;
+}

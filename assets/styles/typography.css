@@ -1,0 +1,36 @@
+h1 {
+    color: black;
+    font-size: 2.7rem;
+    font-weight: normal;
+    margin: 0 0 0.5rem 0;
+    font-family: 'HomeVideo', Arial, sans-serif;
+}
+
+h2 {
+    color: black;
+    font-size: 2.5rem;
+    font-weight: normal;
+    margin: 0;
+    font-family: 'FunnelDisplay', Arial, sans-serif;
+}
+
+p {
+    color: #666666;
+    font-size: 1.1rem;
+    font-weight: normal;
+    margin: 1rem 0 1rem 0;
+    font-family: 'FunnelDisplay', Arial, sans-serif;
+}
+
+a {
+    color: inherit;
+    text-decoration: underline;
+}
+
+t {
+    color: #666666;
+    font-size: 0.8rem;
+    font-weight: normal;
+    margin: 1rem 0 1rem 0;
+    font-family: 'FunnelDisplay', Arial, sans-serif;
+}
