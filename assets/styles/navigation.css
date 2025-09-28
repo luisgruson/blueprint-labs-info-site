@@ -82,3 +82,17 @@
         font-size: 0.75rem;
     }
 }
+
+@media (max-width: 480px) {
+    .floating-nav {
+        padding: 0.4rem 0.6rem;
+    }
+    
+    .nav-links {
+        gap: 0.6rem;
+    }
+    
+    .nav-links a {
+        font-size: 0.7rem;
+    }
+}

@@ -173,3 +173,39 @@
         font-size: 1.5rem;
     }
 }
+
+/* Extra small mobile screens */
+@media (max-width: 480px) {
+    .hero-content h1 {
+        font-size: 1.3rem;
+    }
+    
+    .hero-content h2 {
+        font-size: 1.1rem;
+    }
+    
+    .hero-content p {
+        font-size: 0.75rem;
+        margin: 0.5rem 0;
+    }
+    
+    .hero-content t {
+        font-size: 0.7rem;
+    }
+    
+    .services-text h1 {
+        font-size: 1.3rem;
+    }
+    
+    .services-text h2 {
+        font-size: 1.1rem;
+    }
+    
+    .services-text p {
+        font-size: 0.75rem;
+    }
+    
+    .contact-us h1 {
+        font-size: 1.3rem;
+    }
+}
