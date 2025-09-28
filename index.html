@@ -55,6 +55,8 @@
             margin: 0 auto;
             flex-direction: column;
             padding: 2rem;
+            width: 100%;
+            box-sizing: border-box;
         }
         
         .services-text {
@@ -86,6 +88,8 @@
             margin: 0 auto;
             flex-direction: column;
             padding: 2rem;
+            width: 100%;
+            box-sizing: border-box;
         }
         
         /* Smooth scrolling for the entire page */
@@ -179,6 +183,15 @@
             padding: 0;
             box-sizing: border-box;
         }
+        
+        /* Prevent horizontal scrolling */
+        body {
+            overflow-x: hidden;
+        }
+        
+        html {
+            overflow-x: hidden;
+        }
 
         .excel-window {
             background: #c0c0c0;
@@ -187,6 +200,9 @@
             box-shadow: 2px 2px 4px rgba(0,0,0,0.3);
             font-family: 'MS Sans Serif', sans-serif;
             font-size: 8pt;
+            max-width: calc(100vw - 40px);
+            width: 100%;
+            overflow-x: auto;
         }
 
         .title-bar {

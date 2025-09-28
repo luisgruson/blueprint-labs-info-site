@@ -12,6 +12,8 @@
     padding: 0.8rem 1.5rem;
     box-shadow: 0 8px 32px rgba(0, 0, 0, 0.1);
     transition: all 0.3s ease;
+    max-width: calc(100vw - 40px);
+    width: auto;
 }
 
 .floating-nav:hover {
@@ -66,20 +68,6 @@
     
     .nav-links a {
         font-size: 0.8rem;
-    }
-}
-
-@media (max-width: 480px) {
-    .floating-nav {
-        padding: 0.5rem 0.8rem;
-    }
-    
-    .nav-links {
-        gap: 0.8rem;
-    }
-    
-    .nav-links a {
-        font-size: 0.75rem;
     }
 }
 
