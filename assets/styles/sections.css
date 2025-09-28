@@ -82,14 +82,21 @@
     }
     
     .hero-content p {
-        font-size: 1rem;
+        font-size: 0.9rem;
         line-height: 1.4;
-        margin: 1rem 0;
+        margin: 0.8rem 0;
+    }
+    
+    .hero-content t {
+        font-size: 0.85rem;
+        line-height: 1.4;
     }
     
     .services {
         padding: 1rem;
         max-width: 100%;
+        margin-top: 0.5rem;
+        margin-bottom: 0.5rem;
     }
     
     .services-text h1 {
@@ -101,12 +108,13 @@
     }
     
     .services-text p {
-        font-size: 1rem;
+        font-size: 0.9rem;
         line-height: 1.4;
     }
     
     .contact-us {
         padding: 1rem;
+        margin-top: 0.5rem;
     }
     
     .contact-us h1 {
@@ -127,12 +135,25 @@
         font-size: 1.2rem;
     }
     
+    .hero-content p {
+        font-size: 0.8rem;
+        margin: 0.6rem 0;
+    }
+    
+    .hero-content t {
+        font-size: 0.75rem;
+    }
+    
     .services-text h1 {
         font-size: 1.5rem;
     }
     
     .services-text h2 {
         font-size: 1.3rem;
+    }
+    
+    .services-text p {
+        font-size: 0.8rem;
     }
     
     .contact-us h1 {
