@@ -126,7 +126,20 @@
     }
 }
 
-@media (max-width: 480px) {
+/* Medium screens - between 860px and 570px */
+@media (max-width: 860px) and (min-width: 571px) {
+    .hero-content p {
+        max-width: 540px;
+        margin-left: auto;
+        margin-right: auto;
+    }
+    
+    .hero-content t {
+        font-size: 0.8rem;
+    }
+}
+
+@media (max-width: 570px) {
     .hero-content h1 {
         font-size: 1.5rem;
     }
