@@ -233,8 +233,6 @@
         }
         
         /* Fix any elements that might cause horizontal scroll */
-        .nav-content,
-        .nav-links,
         .services-text,
         .contact-content {
             max-width: 100%;
@@ -246,6 +244,54 @@
             max-width: 100%;
             word-wrap: break-word;
             overflow-wrap: break-word;
+        }
+
+        /* Floating Navigation Styles */
+        .floating-nav {
+            position: fixed;
+            top: 20px;
+            left: 50%;
+            transform: translateX(-50%);
+            z-index: 1000;
+            background: rgba(255, 255, 255, 0.1);
+            backdrop-filter: blur(10px);
+            -webkit-backdrop-filter: blur(10px);
+            border: 1px solid rgba(255, 255, 255, 0.2);
+            border-radius: 15px;
+            box-shadow: 0 8px 32px rgba(0, 0, 0, 0.1);
+            min-width: 450px;
+            padding: 0.8rem 1.5rem;
+        }
+
+        .nav-content {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            width: 100%;
+        }
+
+        .nav-logo {
+            font-family: 'HomeVideo', Arial, sans-serif;
+            font-size: 1.2rem;
+            font-weight: bold;
+            color: #333;
+        }
+
+        .nav-links {
+            display: flex;
+            gap: 2rem;
+        }
+
+        .nav-links a {
+            font-family: 'FunnelDisplay', Arial, sans-serif;
+            font-size: 0.9rem;
+            color: #333;
+            text-decoration: none;
+            transition: color 0.3s ease;
+        }
+
+        .nav-links a:hover {
+            color: #5d89b0;
         }
 
         /* Logo Carousel Styles */
@@ -694,23 +740,6 @@
                 margin: 1rem auto 0;
             }
             
-            .floating-nav {
-                top: 10px;
-                padding: 0.6rem 1rem;
-                min-width: 444px;
-            }
-            
-            .nav-content {
-                gap: 1rem;
-            }
-            
-            .nav-links {
-                gap: 1rem;
-            }
-            
-            .nav-links a {
-                font-size: 0.8rem;
-            }
             
             .logo-carousel-section {
                 padding: 1rem 0;
@@ -802,18 +831,6 @@
                 padding: 0.6rem;
             }
             
-            .floating-nav {
-                padding: 0.5rem 0.8rem;
-                min-width: 444px;
-            }
-            
-            .nav-links {
-                gap: 0.8rem;
-            }
-            
-            .nav-links a {
-                font-size: 0.75rem;
-            }
             
             .logo-carousel-section {
                 padding: 0.8rem 0;
@@ -898,27 +915,21 @@
             }
             
             .floating-nav {
-                padding: 0.4rem 0;
-                margin: 0 auto;
-                width: 100%;
-                min-width: 444px;
-                max-width: 450px;
-            }
-            
-            .nav-content {
-                width: 100%;
-                justify-content: space-between;
-                flex-wrap: nowrap;
+                width: 85%;
+                min-width: unset;
+                padding: 0.6rem 1rem;
             }
             
             .nav-links {
-                gap: 0.6rem;
-                flex-shrink: 0;
+                gap: 1.5rem;
             }
             
             .nav-links a {
-                font-size: 1.4rem;
-                white-space: nowrap;
+                font-size: 0.8rem;
+            }
+            
+            .nav-logo {
+                font-size: 1rem;
             }
             
             .logo-carousel-section {
@@ -951,11 +962,11 @@
     <nav class="floating-nav">
         <div class="nav-content">
             <div class="nav-logo">Blueprint Labs</div>
-        <div class="nav-links">
-            <a href="#hero">About</a>
-            <a href="#services">Services</a>
-            <a href="#contact-us">Contact</a>
-        </div>
+            <div class="nav-links">
+                <a href="#hero">about</a>
+                <a href="#services">services</a>
+                <a href="#contact-us">contact</a>
+            </div>
         </div>
     </nav>
     
