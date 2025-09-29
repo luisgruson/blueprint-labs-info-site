@@ -854,6 +854,7 @@
             .hero-content .button {
                 font-size: 0.65rem;
                 padding: 0.35rem 0.7rem;
+                transform: scale(1.5);
             }
             
             .services-text h1 {
@@ -896,14 +897,24 @@
             
             .floating-nav {
                 padding: 0.4rem 0.6rem;
+                width: 100%;
+                max-width: 100vw;
+            }
+            
+            .nav-content {
+                width: 100%;
+                justify-content: space-between;
+                flex-wrap: nowrap;
             }
             
             .nav-links {
                 gap: 0.6rem;
+                flex-shrink: 0;
             }
             
             .nav-links a {
                 font-size: 0.7rem;
+                white-space: nowrap;
             }
             
             .logo-carousel-section {
@@ -922,6 +933,11 @@
             .logo-item img {
                 max-width: 60px;
                 max-height: 30px;
+            }
+            
+            /* Make carousel 2.5x faster on mobile */
+            .logo-track {
+                animation: scroll 16s linear infinite;
             }
         }
         
