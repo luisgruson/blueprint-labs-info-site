@@ -965,14 +965,14 @@
         <div class="nav-content">
             <div class="nav-logo">Blueprint Labs</div>
             <div class="nav-links">
-                <a href="#hero">about</a>
+                <a href="#about">about</a>
                 <a href="#services">services</a>
                 <a href="#contact-us">contact</a>
             </div>
         </div>
     </nav>
     
-    <div id="hero" class="hero-content">
+    <div id="about" class="hero-content">
         <h1 class="typewriter">The Technical Design Lab</h1>
         <h2 class="fade-in" style="opacity: 0;">For Real Estate Companies</h2>
         <p class="fade-in" style="opacity: 0;">We help leaders in the real estate industry define and design AI-native products and workflows to unlock new value for
@@ -1235,12 +1235,28 @@
     <script>
         // Scroll to top on page load/refresh
         window.addEventListener('load', function() {
-            window.scrollTo(0, 0);
+            // Use requestAnimationFrame to ensure DOM is fully ready
+            requestAnimationFrame(function() {
+                window.scrollTo({
+                    top: 0,
+                    left: 0,
+                    behavior: 'instant'
+                });
+            });
         });
         
-        // Also handle beforeunload to ensure we're at top
-        window.addEventListener('beforeunload', function() {
-            window.scrollTo(0, 0);
+        // Handle page show event for better refresh handling
+        window.addEventListener('pageshow', function(event) {
+            if (event.persisted) {
+                // Page was loaded from cache, scroll to top
+                requestAnimationFrame(function() {
+                    window.scrollTo({
+                        top: 0,
+                        left: 0,
+                        behavior: 'instant'
+                    });
+                });
+            }
         });
         
         // Add typewriter effect on page load
