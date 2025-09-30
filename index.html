@@ -4,6 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Blueprint Labs</title>
+    <link rel="icon" type="image/svg+xml" href="favicon.svg">
     <link rel="stylesheet" href="assets/styles/button.css">
     <link rel="stylesheet" href="assets/styles/typography.css">
     <link rel="stylesheet" href="assets/styles/navigation.css">
@@ -977,7 +978,7 @@
         <p class="fade-in" style="opacity: 0;">We help leaders in the real estate industry define and design AI-native products and workflows to unlock new value for
         their businesses.</p>
         <a href="#services" class="button fade-in" style="opacity: 0;">See What We Do</a>
-        <t class="fade-in" style="opacity: 0;">Or learn more with a <a href="https://cal.com/the-technical-design-lab/30min">free strategy call</a></t>
+        <t class="fade-in" style="opacity: 0;">Or learn more with a <a href="https://calendly.com/lg-luisgruson/30min">free strategy call</a></t>
         
         <div class="scroll-arrow fade-in" style="opacity: 0;">
             <div class="arrow-down">↓</div>
@@ -1046,12 +1047,11 @@
             </div>
 
             <div class="sheet-tabs">
-                <div class="sheet-tab active">Automate workflows</div>
-                <div class="sheet-tab">Web scraping services</div>
-                <div class="sheet-tab">CRM management</div>
-                <div class="sheet-tab">Property Assessment</div>
-                <div class="sheet-tab">Dynamic Modeling</div>
-                <div class="sheet-tab">Lead Generation</div>
+                <div class="sheet-tab active">Lender</div>
+                <div class="sheet-tab">Contractor</div>
+                <div class="sheet-tab">Asset Manager</div>
+                <div class="sheet-tab">Investor</div>
+                <div class="sheet-tab">Broker</div>
             </div>
 
             <div class="status-bar">
@@ -1201,13 +1201,27 @@
                         </div>
                         
                         <div class="form-row">
+                            <label class="form-label">Primary Job Function:</label>
+                            <div class="form-input">
+                                <input type="text" name="job_function">
+                            </div>
+                        </div>
+                        
+                        <div class="form-row">
+                            <label class="form-label">Did any solutions on the site stand out to you?:</label>
+                            <div class="form-input">
+                                <input type="text" name="solutions_interest">
+                            </div>
+                        </div>
+                        
+                        <div class="form-row">
                             <label class="form-label">Company Name:</label>
                             <div class="form-input">
                                 <input type="text" name="company">
                             </div>
                         </div>
                         
-                        <button type="button" class="signup-button" onclick="alert('Call scheduled! 📞')">Schedule a Call</button>
+                        <button type="button" class="signup-button" onclick="scheduleCall()">Schedule a Call</button>
                     </form>
                 </div>
             </div>
@@ -1280,6 +1294,41 @@
             // Start typing after a short delay
             setTimeout(typeWriter, 1000);
         });
+
+        // Function to handle form submission and redirect to Calendly with pre-filled data
+        function scheduleCall() {
+            // Get form values
+            const fullName = document.querySelector('input[name="fullname"]').value;
+            const email = document.querySelector('input[name="email"]').value;
+            const jobFunction = document.querySelector('input[name="job_function"]').value;
+            const solutionsInterest = document.querySelector('input[name="solutions_interest"]').value;
+            const company = document.querySelector('input[name="company"]').value;
+            
+            // Validate required fields
+            if (!fullName || !email) {
+                alert('Please fill in your name and email address.');
+                return;
+            }
+            
+            // Build Calendly URL with pre-filled data
+            const calendlyUrl = new URL('https://calendly.com/lg-luisgruson/30min');
+            
+            // Add pre-filled information as URL parameters
+            calendlyUrl.searchParams.set('name', fullName);
+            calendlyUrl.searchParams.set('email', email);
+            if (jobFunction) {
+                calendlyUrl.searchParams.set('a1', jobFunction); // Primary Job Function
+            }
+            if (solutionsInterest) {
+                calendlyUrl.searchParams.set('a2', solutionsInterest); // Solutions that stood out
+            }
+            if (company) {
+                calendlyUrl.searchParams.set('a3', company); // Company name
+            }
+            
+            // Open Calendly in new tab
+            window.open(calendlyUrl.toString(), '_blank');
+        }
 
     </script>
     

@@ -3,14 +3,13 @@ class ExcelCardInterface {
     constructor() {
         this.selectedCell = null;
         this.cards = {};
-        this.currentSheet = 'Automate workflows';
+        this.currentSheet = 'Lender';
         this.sheets = {
-            'Automate workflows': { cards: {} },
-            'Web scraping services': { cards: {} },
-            'CRM management': { cards: {} },
-            'Property Assessment': { cards: {} },
-            'Dynamic Modeling': { cards: {} },
-            'Lead Generation': { cards: {} }
+            'Lender': { cards: {} },
+            'Contractor': { cards: {} },
+            'Asset Manager': { cards: {} },
+            'Investor': { cards: {} },
+            'Broker': { cards: {} }
         };
         this.sheetNames = Object.keys(this.sheets);
         this.currentSheetIndex = 0;
@@ -224,6 +223,83 @@ class ExcelCardInterface {
             // Create the service card content
             const serviceData = this.getServiceData(this.currentSheet);
             
+            if ((this.currentSheet === 'Lender' || this.currentSheet === 'Contractor' || this.currentSheet === 'Asset Manager' || this.currentSheet === 'Investor' || this.currentSheet === 'Broker') && serviceData.services) {
+                // Special handling for Lenders with multiple services
+                serviceData.services.forEach((service, index) => {
+                    // Create service container
+                    const serviceContainer = document.createElement('div');
+                    serviceContainer.style.marginBottom = '10px';
+                    serviceContainer.style.padding = '15px';
+                    if (index === 0) {
+                        serviceContainer.style.marginTop = '0';
+                    }
+                    
+                    // Create h4 title
+                    const title = document.createElement('h4');
+                    title.style.fontFamily = "'MS Sans Serif', sans-serif";
+                    title.style.fontSize = '12pt';
+                    title.style.fontWeight = 'bold';
+                    title.style.color = 'black';
+                    title.style.margin = '0 0 8px 0';
+                    title.style.textAlign = 'left';
+                    title.textContent = service.title;
+                    
+                    // Create h5 description
+                    const description = document.createElement('h5');
+                    description.style.fontFamily = "'MS Sans Serif', sans-serif";
+                    description.style.fontSize = '9pt';
+                    description.style.fontWeight = 'normal';
+                    description.style.color = '#333';
+                    description.style.margin = '0 0 5px 0';
+                    description.style.textAlign = 'left';
+                    description.style.lineHeight = '1.4';
+                    description.textContent = service.description;
+                    
+                    // Create learn more button
+                    const button = document.createElement('a');
+                    button.textContent = 'Learn More';
+                    
+                    // Build Calendly URL with pre-filled data
+                    const calendlyUrl = new URL('https://calendly.com/lg-luisgruson/30min');
+                    calendlyUrl.searchParams.set('name', ''); // Leave name empty for user to fill
+                    calendlyUrl.searchParams.set('email', ''); // Leave email empty for user to fill
+                    calendlyUrl.searchParams.set('a1', this.currentSheet); // Primary Job Function
+                    calendlyUrl.searchParams.set('a2', service.title); // Service that stood out
+                    
+                    button.href = calendlyUrl.toString();
+                    button.target = '_blank';
+                    button.style.fontFamily = "'MS Sans Serif', sans-serif";
+                    button.style.fontSize = '8pt';
+                    button.style.backgroundColor = '#0054e3';
+                    button.style.color = 'white';
+                    button.style.border = '1px outset #0054e3';
+                    button.style.padding = '3px 10px';
+                    button.style.cursor = 'pointer';
+                    button.style.borderRadius = '2px';
+                    button.style.margin = '0';
+                    button.style.display = 'inline-block';
+                    button.style.textDecoration = 'none';
+                    button.style.boxSizing = 'border-box';
+                    button.style.minWidth = 'fit-content';
+                    
+                    // Add hover effect
+                    button.addEventListener('mouseenter', () => {
+                        button.style.backgroundColor = '#003d99';
+                    });
+                    button.addEventListener('mouseleave', () => {
+                        button.style.backgroundColor = '#0054e3';
+                    });
+                    
+                    // Append all elements to service container
+                    serviceContainer.appendChild(title);
+                    serviceContainer.appendChild(description);
+                    serviceContainer.appendChild(button);
+                    
+                    // Append service container to main element
+                    titleElement.appendChild(serviceContainer);
+                });
+            } else {
+                // Default single service display
             // Create h4 title
             const title = document.createElement('h4');
             title.style.fontFamily = "'MS Sans Serif', sans-serif";
@@ -245,9 +321,18 @@ class ExcelCardInterface {
             description.style.lineHeight = '1.4';
             description.textContent = serviceData.description;
             
-            // Create learn more button
-            const button = document.createElement('button');
-            button.textContent = 'Learn More';
+                // Create learn more button
+                const button = document.createElement('a');
+                button.textContent = 'Learn More';
+                
+                // Build Calendly URL with pre-filled data
+                const calendlyUrl = new URL('https://calendly.com/lg-luisgruson/30min');
+                calendlyUrl.searchParams.set('name', ''); // Leave name empty for user to fill
+                calendlyUrl.searchParams.set('email', ''); // Leave email empty for user to fill
+                calendlyUrl.searchParams.set('a1', this.currentSheet); // Primary Job Function
+                
+                button.href = calendlyUrl.toString();
+                button.target = '_blank';
             button.style.fontFamily = "'MS Sans Serif', sans-serif";
             button.style.fontSize = '9pt';
             button.style.backgroundColor = '#0054e3';
@@ -257,7 +342,10 @@ class ExcelCardInterface {
             button.style.cursor = 'pointer';
             button.style.borderRadius = '2px';
             button.style.margin = '0 auto';
-            button.style.display = 'block';
+                button.style.display = 'block';
+                button.style.textDecoration = 'none';
+                button.style.boxSizing = 'border-box';
+                button.style.minWidth = 'fit-content';
             
             // Add hover effect
             button.addEventListener('mouseenter', () => {
@@ -271,34 +359,101 @@ class ExcelCardInterface {
             titleElement.appendChild(title);
             titleElement.appendChild(description);
             titleElement.appendChild(button);
+            }
         }
     }
     
     getServiceData(serviceName) {
         const serviceData = {
-            'Automate workflows': {
-                title: 'Automate Workflows',
-                description: 'Streamline your business processes with intelligent automation solutions that reduce manual work and increase efficiency.'
+            'Lender': {
+                title: 'Lender',
+                description: 'AI-powered solutions for loan processing and underwriting automation.',
+                services: [
+                    {
+                        title: 'Loan Document Auto-Extraction & Underwriting Feed',
+                        description: 'AI auto-ingests loan packages, parses financials, and populates underwriting templates instantly.'
+                    },
+                    {
+                        title: 'Borrower Follow-Up Automation',
+                        description: 'Automates document collection and status tracking for borrower submissions.'
+                    },
+                    {
+                        title: 'Automated Loan Committee Memo Builder',
+                        description: 'Generates IC memos from loan data automatically, saving hours of analyst time.'
+                    }
+                ]
             },
-            'Web scraping services': {
-                title: 'Web Scraping Services',
-                description: 'Extract valuable data from websites to gain competitive insights and market intelligence for your real estate business.'
+            'Contractor': {
+                title: 'Contractor',
+                description: 'Construction and project management automation solutions.',
+                services: [
+                    {
+                        title: 'Auto-Generated Bid Sheets',
+                        description: 'Transforms scope notes into bid requests and live comparison dashboards instantly.'
+                    },
+                    {
+                        title: 'Job Scheduling & Coordination',
+                        description: 'Automates project timelines, trade scheduling, and delay notifications in real time.'
+                    },
+                    {
+                        title: 'Automated Client Messaging & Progress Updates',
+                        description: 'Sends weekly progress emails with photos, milestones, and payment status automatically.'
+                    }
+                ]
             },
-            'CRM management': {
-                title: 'CRM Management',
-                description: 'Optimize customer relationships with AI-powered CRM solutions that help you manage leads and close more deals.'
+            'Asset Manager': {
+                title: 'Asset Manager',
+                description: 'Portfolio optimization and property management automation.',
+                services: [
+                    {
+                        title: 'Automated Leasing & Renewal Tracker',
+                        description: 'Tracks lease expirations and automates renewal outreach before deadlines.'
+                    },
+                    {
+                        title: 'NOI & KPI Auto-Dashboards',
+                        description: 'Converts monthly financials into real-time performance dashboards automatically.'
+                    },
+                    {
+                        title: 'CapEx Budget Tracker',
+                        description: 'Monitors CapEx spend vs budget and sends alerts when limits approach.'
+                    }
+                ]
             },
-            'Property Assessment': {
-                title: 'Property Assessment',
-                description: 'Accurate property valuations using advanced AI algorithms that analyze market data and property characteristics.'
+            'Investor': {
+                title: 'Investor',
+                description: 'Investment analysis and market intelligence automation.',
+                services: [
+                    {
+                        title: 'Inbox Deal Screening',
+                        description: 'AI scans incoming broker emails for key deal metrics, filters deals, and generates instant summaries.'
+                    },
+                    {
+                        title: 'Broker Buy-Box Screening',
+                        description: 'Custom broker submission portals with real-time screening and instant deal scoring.'
+                    },
+                    {
+                        title: 'Data Extraction & Underwriting Automation',
+                        description: 'Auto-extracts financials, integrates property data, and drafts LOIs/IC memos instantly.'
+                    }
+                ]
             },
-            'Dynamic Modeling': {
-                title: 'Dynamic Modeling',
-                description: 'Create predictive models for market trends and property values to make data-driven investment decisions.'
-            },
-            'Lead Generation': {
-                title: 'Lead Generation',
-                description: 'Generate high-quality leads through intelligent targeting systems that identify potential clients and opportunities.'
+            'Broker': {
+                title: 'Broker',
+                description: 'Client relationship and transaction management automation.',
+                services: [
+                    {
+                        title: 'Instant Buyer–Deal Matching & Auto Outreach',
+                        description: 'Matches new deals to the right buyers and sends personalized outreach instantly.'
+                    },
+                    {
+                        title: 'Deal Screening + Auto Underwriting Summaries',
+                        description: 'Extracts metrics from OMs, screens deals, and generates investor-ready summaries automatically.'
+                    },
+                    {
+                        title: 'Automated Buyer Follow-Up & Call Scheduling',
+                        description: 'Automates follow-ups, call scheduling, and buyer engagement after initial outreach.'
+                    }
+                ]
             }
         };
         
