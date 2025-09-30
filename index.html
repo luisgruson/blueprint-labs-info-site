@@ -36,7 +36,7 @@
         
         
         .hero-content {
-            height: 100vh;
+            min-height: 100vh;
             display: flex;
             justify-content: center;
             align-items: center;
@@ -44,6 +44,7 @@
             max-width: 700px;
             margin: 0 auto;
             flex-direction: column;
+            overflow-y: visible;
         }
         
         .hero-content p {
@@ -53,7 +54,7 @@
         }
         
         .services {
-            height: 100vh;
+            min-height: 100vh;
             display: flex;
             justify-content: center;
             align-items: center;
@@ -64,6 +65,7 @@
             padding: 2rem;
             width: 100%;
             box-sizing: border-box;
+            overflow-y: visible;
         }
         
         .services-text {
@@ -92,7 +94,7 @@
         }
         
         .contact-us {
-            height: 70vh;
+            min-height: 70vh;
             display: flex;
             flex-direction: column;
             background-color: #ffffff;
@@ -100,6 +102,7 @@
             padding: 0;
             width: 100%;
             box-sizing: border-box;
+            overflow-y: visible;
         }
         
         /* Smooth scrolling for the entire page */
@@ -490,12 +493,38 @@
             padding: 1px 4px;
         }
 
+        .formula-display {
+            flex: 1;
+            height: 18px;
+            border: 1px inset #c0c0c0;
+            background: white;
+            font-size: 8pt;
+            padding: 1px 4px;
+            display: flex;
+            align-items: center;
+            color: #000;
+        }
+
+        /* Ensure Excel content can expand properly */
+        .sheet-container {
+            min-height: auto !important;
+            height: auto !important;
+        }
+
+        .sheet-title {
+            min-height: auto !important;
+            height: auto !important;
+        }
+
         .spreadsheet-container {
             background: white;
             border: 1px inset #c0c0c0;
             margin: 4px;
             overflow: auto;
-            height: 400px;
+            min-height: 400px;
+            height: auto;
+            padding: 10px;
+            box-sizing: border-box;
         }
 
         .spreadsheet {
@@ -504,6 +533,7 @@
             border-collapse: collapse;
             max-width: 100%;
             overflow-x: auto;
+            min-height: auto;
         }
 
         .row-header {
@@ -706,7 +736,8 @@
             }
             
             .spreadsheet-container {
-                height: 300px;
+                min-height: 300px;
+                height: auto;
             }
             
             .spreadsheet {
@@ -821,7 +852,8 @@
             }
             
             .spreadsheet-container {
-                height: 250px;
+                min-height: 250px;
+                height: auto;
             }
             
             .contact-us h1 {
@@ -905,7 +937,8 @@
             }
             
             .spreadsheet-container {
-                height: 200px;
+                min-height: 200px;
+                height: auto;
             }
             
             .contact-us h1 {
@@ -973,7 +1006,7 @@
     </nav>
     
     <div id="about" class="hero-content">
-        <h1 class="typewriter">The Technical Design Lab</h1>
+            <h1 class="typewriter">The Technical Blueprint</h1>
         <h2 class="fade-in" style="opacity: 0;">For Real Estate Companies</h2>
         <p class="fade-in" style="opacity: 0;">We help leaders in the real estate industry define and design AI-native products and workflows to unlock new value for
         their businesses.</p>
@@ -1035,9 +1068,9 @@
             </div>
 
             <div class="formula-bar">
-                <input type="text" class="name-box" value="A1" readonly>
+                <input type="text" class="name-box" value="Blueprint Labs" readonly>
                 <span>=</span>
-                <input type="text" class="formula-input" placeholder="Click a cell to edit...">
+                <span class="formula-display">Blueprint Labs</span>
             </div>
 
             <div class="spreadsheet-container">
@@ -1047,11 +1080,11 @@
             </div>
 
             <div class="sheet-tabs">
-                <div class="sheet-tab active">Lender</div>
-                <div class="sheet-tab">Contractor</div>
-                <div class="sheet-tab">Asset Manager</div>
-                <div class="sheet-tab">Investor</div>
-                <div class="sheet-tab">Broker</div>
+                <div class="sheet-tab active">Lenders</div>
+                <div class="sheet-tab">Contractors</div>
+                <div class="sheet-tab">Asset Managers</div>
+                <div class="sheet-tab">Investors</div>
+                <div class="sheet-tab">Brokers</div>
             </div>
 
             <div class="status-bar">

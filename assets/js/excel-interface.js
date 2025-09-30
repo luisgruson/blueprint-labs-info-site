@@ -3,13 +3,13 @@ class ExcelCardInterface {
     constructor() {
         this.selectedCell = null;
         this.cards = {};
-        this.currentSheet = 'Lender';
+        this.currentSheet = 'Lenders';
         this.sheets = {
-            'Lender': { cards: {} },
-            'Contractor': { cards: {} },
-            'Asset Manager': { cards: {} },
-            'Investor': { cards: {} },
-            'Broker': { cards: {} }
+            'Lenders': { cards: {} },
+            'Contractors': { cards: {} },
+            'Asset Managers': { cards: {} },
+            'Investors': { cards: {} },
+            'Brokers': { cards: {} }
         };
         this.sheetNames = Object.keys(this.sheets);
         this.currentSheetIndex = 0;
@@ -28,8 +28,8 @@ class ExcelCardInterface {
         sheetContainer.className = 'sheet-container';
         sheetContainer.style.display = 'flex';
         sheetContainer.style.justifyContent = 'center';
-        sheetContainer.style.alignItems = 'center';
-        sheetContainer.style.height = '100%';
+        sheetContainer.style.alignItems = 'flex-start';
+        sheetContainer.style.minHeight = '100%';
         sheetContainer.style.width = '100%';
         sheetContainer.style.padding = '20px';
         sheetContainer.style.boxSizing = 'border-box';
@@ -65,10 +65,9 @@ class ExcelCardInterface {
         document.querySelector('.name-box').value = cell.dataset.address;
         
         // Update formula bar
-        const formulaInput = document.querySelector('.formula-input');
+        const formulaDisplay = document.querySelector('.formula-display');
         const existingCard = this.cards[cell.dataset.address];
-        formulaInput.value = existingCard ? existingCard.content : '';
-        formulaInput.focus();
+        formulaDisplay.textContent = existingCard ? existingCard.content : 'Sample Solutions';
     }
 
     addCard(address, content) {
@@ -102,13 +101,17 @@ class ExcelCardInterface {
     }
 
     editCard(address) {
-        const formulaInput = document.querySelector('.formula-input');
-        formulaInput.value = this.cards[address].content;
-        formulaInput.focus();
-        formulaInput.select();
+        const formulaDisplay = document.querySelector('.formula-display');
+        formulaDisplay.textContent = this.cards[address].content;
     }
 
     populateWithSampleCards() {
+        // Set default formula bar display
+        const formulaDisplay = document.querySelector('.formula-display');
+        if (formulaDisplay) {
+            formulaDisplay.textContent = 'Sample Solutions';
+        }
+        
         // Display the current sheet title
         this.displaySheetTitle();
     }
@@ -223,7 +226,7 @@ class ExcelCardInterface {
             // Create the service card content
             const serviceData = this.getServiceData(this.currentSheet);
             
-            if ((this.currentSheet === 'Lender' || this.currentSheet === 'Contractor' || this.currentSheet === 'Asset Manager' || this.currentSheet === 'Investor' || this.currentSheet === 'Broker') && serviceData.services) {
+            if ((this.currentSheet === 'Lenders' || this.currentSheet === 'Contractors' || this.currentSheet === 'Asset Managers' || this.currentSheet === 'Investors' || this.currentSheet === 'Brokers') && serviceData.services) {
                 // Special handling for Lenders with multiple services
                 serviceData.services.forEach((service, index) => {
                     // Create service container
@@ -365,8 +368,8 @@ class ExcelCardInterface {
     
     getServiceData(serviceName) {
         const serviceData = {
-            'Lender': {
-                title: 'Lender',
+            'Lenders': {
+                title: 'Lenders',
                 description: 'AI-powered solutions for loan processing and underwriting automation.',
                 services: [
                     {
@@ -383,8 +386,8 @@ class ExcelCardInterface {
                     }
                 ]
             },
-            'Contractor': {
-                title: 'Contractor',
+            'Contractors': {
+                title: 'Contractors',
                 description: 'Construction and project management automation solutions.',
                 services: [
                     {
@@ -401,8 +404,8 @@ class ExcelCardInterface {
                     }
                 ]
             },
-            'Asset Manager': {
-                title: 'Asset Manager',
+            'Asset Managers': {
+                title: 'Asset Managers',
                 description: 'Portfolio optimization and property management automation.',
                 services: [
                     {
@@ -419,8 +422,8 @@ class ExcelCardInterface {
                     }
                 ]
             },
-            'Investor': {
-                title: 'Investor',
+            'Investors': {
+                title: 'Investors',
                 description: 'Investment analysis and market intelligence automation.',
                 services: [
                     {
@@ -437,8 +440,8 @@ class ExcelCardInterface {
                     }
                 ]
             },
-            'Broker': {
-                title: 'Broker',
+            'Brokers': {
+                title: 'Brokers',
                 description: 'Client relationship and transaction management automation.',
                 services: [
                     {
