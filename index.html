@@ -62,7 +62,7 @@
             max-width: 1200px;
             margin: 0 auto;
             flex-direction: column;
-            padding: 100px 2rem 2rem 2rem;
+            padding: 2rem;
             width: 100%;
             box-sizing: border-box;
             overflow-y: visible;
@@ -108,6 +108,11 @@
         /* Smooth scrolling for the entire page */
         html {
             scroll-behavior: smooth;
+        }
+
+        /* Add scroll offset for fixed navigation */
+        .services {
+            scroll-margin-top: 90px;
         }
         
         .contact-content {
