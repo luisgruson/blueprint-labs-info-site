@@ -67,7 +67,7 @@ class ExcelCardInterface {
         // Update formula bar
         const formulaDisplay = document.querySelector('.formula-display');
         const existingCard = this.cards[cell.dataset.address];
-        formulaDisplay.textContent = existingCard ? existingCard.content : 'Sample Solutions';
+        formulaDisplay.textContent = existingCard ? existingCard.content : 'SAMPLE SOLUTIONS';
     }
 
     addCard(address, content) {
@@ -109,7 +109,7 @@ class ExcelCardInterface {
         // Set default formula bar display
         const formulaDisplay = document.querySelector('.formula-display');
         if (formulaDisplay) {
-            formulaDisplay.textContent = 'Sample Solutions';
+            formulaDisplay.textContent = 'SAMPLE SOLUTIONS';
         }
         
         // Display the current sheet title
