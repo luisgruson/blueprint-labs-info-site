@@ -263,7 +263,7 @@ class ExcelCardInterface {
                     button.textContent = 'Learn More';
                     
                     // Build Calendly URL with pre-filled data
-                    const calendlyUrl = new URL('https://calendly.com/lg-luisgruson/30min');
+                    const calendlyUrl = new URL('https://calendly.com/blueprint-labs/30min');
                     calendlyUrl.searchParams.set('name', ''); // Leave name empty for user to fill
                     calendlyUrl.searchParams.set('email', ''); // Leave email empty for user to fill
                     calendlyUrl.searchParams.set('a1', this.currentSheet); // Primary Job Function
@@ -329,7 +329,7 @@ class ExcelCardInterface {
                 button.textContent = 'Learn More';
                 
                 // Build Calendly URL with pre-filled data
-                const calendlyUrl = new URL('https://calendly.com/lg-luisgruson/30min');
+                const calendlyUrl = new URL('https://calendly.com/blueprint-labs/30min');
                 calendlyUrl.searchParams.set('name', ''); // Leave name empty for user to fill
                 calendlyUrl.searchParams.set('email', ''); // Leave email empty for user to fill
                 calendlyUrl.searchParams.set('a1', this.currentSheet); // Primary Job Function
